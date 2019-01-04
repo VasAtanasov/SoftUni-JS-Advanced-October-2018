@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../jquery-3.3.1.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+<body>
+<div id="protocol">
+    <section>
+        <table id="acceptanceForm">
+            <thead>
+            <tr>
+                <th colspan="5">Acceptance form</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="productInfo">
+                <td>Company</td>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Scrape</td>
+                <td>Acceptance</td>
+            </tr>
+            <tr id="fields">
+                <td><input type="text" name="shippingCompany" placeholder="Coca-Cola Bulgaria.."/></td>
+                <td><input type="text" name="productName" placeholder="Coca-Cola.."/></td>
+                <td><input type="text" name="productQuantity" placeholder="200.."/></td>
+                <td><input type="text" name="productScrape" placeholder="14.."/></td>
+                <td>
+                    <button type="button" id="acceptance" onclick="acceptance()">Add it</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <hr>
+        <div id="warehouse">
+            <h1>Stock available in the warehouse</h1>
+        </div>
+    </section>
+
+    <script>
+        let shippingCompanyField = $('input[name="shippingCompany"]');
+        let productNameField = $('input[name="productName"]');
+        let productQuantityField = $('input[name="productQuantity"]');
+        let productScrapeField = $('input[name="productScrape"]');
+        let btn = $('button#acceptance');
+        let inputs = [
+            {
+                shippingCompany: 'Coca-Cola Bulgaria',
+                productName: 'Coca-Cola',
+                productQuantity: '200',
+                productScrape: '14',
+            },
+            {
+                shippingCompany: 'KRBS',
+                productName: 'Vehicles',
+                productQuantity: '2345',
+                productScrape: '123',
+            },
+        ];
+
+        inputs.forEach((i) => {
+            shippingCompanyField.val(i.shippingCompany);
+            productNameField.val(i.productName);
+            productQuantityField.val(i.productQuantity);
+            productScrapeField.val(i.productScrape);
+            btn.click();
+        });
+
+        shippingCompanyField.val('');
+        productNameField.val('');
+        productQuantityField.val('');
+        productScrapeField.val('');
+
+    </script>
+</div>
+</body>
+</html>

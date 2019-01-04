@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shop</title>
+    <link rel="stylesheet" href="shop-style.css">
+    <script src="../../../jquery-3.3.1.js"></script>
+    <script src="shop.js"></script>
+</head>
+<body>
+<div class="wrapper"></div>
+<script>onlineShop('.wrapper')</script>
+<script>
+    $('.custom-select').val('T-shirt');
+    $('#quantity').val(1);
+    $('#price').val(1);
+
+    $('#submit').trigger('click');
+
+    $('.custom-select').val('Jeans');
+    $('#quantity').val(10);
+    $('#price').val(20);
+
+    $('#submit').trigger('click');
+
+    $('.custom-select').val('Shoes');
+    $('#quantity').val(30);
+    $('#price').val(50);
+
+    $('#submit').trigger('click');
+
+
+    $('.custom-select').val('Shoes');
+    $('#quantity').val(150);
+    $('#price').val(50);
+
+    $('#submit').trigger('click');
+
+</script>
+</body>

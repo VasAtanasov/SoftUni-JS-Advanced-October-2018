@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2. Add and Delete</title>
+</head>
+<body>
+<h1>List of Items</h1>
+<ul id="items"></ul>
+<input type="text" id="newText"/>
+<input type="button" value="Add"
+       onclick="addItem()">
+<script>
+    function addItem() {
+        let node = document.getElementById('newText');
+        if (node.value.trim().length > 0) {
+            let li = document.createElement('li');
+            let href = document.createElement('a');
+            href.href = '#';
+            href.textContent = '[Delete]';
+            href.addEventListener('click',deleteItem);
+            li.innerHTML += node.value + ' ';
+            li.appendChild(href);
+            document.getElementById('items').appendChild(li);
+            node.value = '';
+        }
+
+
+
+        function deleteItem() {
+            let li = this.parentNode;
+            let ul = this.parentNode.parentNode;
+            ul.removeChild(li);
+        }
+    }
+</script>
+
+</body>
+</html>

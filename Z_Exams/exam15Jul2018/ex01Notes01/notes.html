@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sticky Notes</title>
+    <link rel="stylesheet" href="notes-style.css">
+    <script src="../../../jquery-3.3.1.js"></script>
+</head>
+<body>
+<div class="text">
+    <div class="title-input">
+        <label>Title: </label>
+        <input class="title" maxlength="11">
+    </div>
+    <div class="text-input">
+        <label>Text: </label>
+        <input class="content" maxlength="102">
+    </div>
+</div>
+<div class="btn">
+    <button id="add-sticker" onclick="addSticker()"> Add new sticker</button>
+</div>
+<div class="stickerBoard">
+    <ul id="sticker-list"></ul>
+</div>
+<script src="solution.js"></script>
+<script>
+    let notes = [
+        {title: 'TODO', content: 'Neshto si'},
+        {title: 'Neznam', content: 'Ne sym bil tam'},
+        {title: 'Kafe', content: 'S Bobi'},
+    ];
+
+    notes.forEach(n => {
+        $('input.title').val(n.title);
+        $('input.content').val(n.content);
+        $('button#add-sticker').click();
+    })
+</script>
+</body>
+</html>

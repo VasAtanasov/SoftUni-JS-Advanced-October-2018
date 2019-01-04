@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Manager</title>
+    <link rel="stylesheet" href="payment-style.css">
+    <script src="../../../jquery-3.3.1.js"></script>
+    <script src="PaymentManager.js"></script>
+</head>
+<body>
+
+<div id="amazon"></div>
+
+<div id="ebay"></div>
+
+<div id="walmart"></div>
+<script>
+    $(function () {
+        let paymentMangersData = [
+            ['amazon', 'Amazon'],
+            ['ebay', 'eBay'],
+            ['walmart', 'Walmart'],
+            // Others
+        ];
+
+        for (let [target, title] of paymentMangersData) {
+            let paymentManager = new PaymentManager(title);
+            paymentManager.render(target);
+        }
+    })
+</script>
+<script>
+    let array =
+        [
+            ["Logitech MX Master", "Mouses", "149.99"],
+            ["Dell XPS 13", "Computers", "999.99"],
+            ["Oree Board", "Keyboards", "80"]
+        ];
+
+    let table = $('#amazon').eq(0).eq(0);
+    console.log(table);
+    let pName = table.find('input[name="name"]');
+    let pCategory = table.find('input[name="category"]');
+    let pPrice = table.find('input[name="price"]');
+    let addBtn = table.find('.input-data').find('button');
+
+    for (const [name, category, price] of array) {
+        pName.val(name);
+        pCategory.val(category);
+        pPrice.val(price);
+        addBtn.click();
+    }
+</script>
+</body>
+</html>

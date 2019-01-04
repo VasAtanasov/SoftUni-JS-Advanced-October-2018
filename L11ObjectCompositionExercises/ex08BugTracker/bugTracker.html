@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bug Tracker</title>
+    <script src="../../jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="bugTracker.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="titlebar">Bug tracker</div>
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Submit Report</a></li>
+            <li><a href="#tabs-2">Delete Report</a></li>
+            <li><a href="#tabs-3">Change Status</a></li>
+            <li><a href="#tabs-4">Set Sort Method</a></li>
+        </ul>
+        <div id="tabs-1">
+            <div id="submitForm">
+                <fieldset id="userInfo">
+                    <legend>Submit Report Form:</legend>
+                    <div class="pairContainer">
+                        <label for="author">Author:</label>
+                        <input id="author" type="text">
+                    </div>
+                    <div class="pairContainer">
+                        <label for="description">Description:</label>
+                        <input id="description" type="text">
+                    </div>
+                    <div class="pairContainer">
+                        <label for="reproducible">Reproducible:</label>
+                        <select id="reproducible">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+                    <div class="pairContainer">
+                        <label for="severity">Severity:</label>
+                        <input id="severity" type="number">
+                    </div>
+                </fieldset>
+                <button id="submit">Submit Report</button>
+            </div>
+        </div>
+        <div id="tabs-2">
+            <div id="deleteForm">
+                <fieldset id="Delete Report">
+                    <legend>Delete Report Form:</legend>
+                    <div class="pairContainer">
+                        <label for="idDelete">ID:</label>
+                        <input id="idDelete" type="number">
+                    </div>
+                </fieldset>
+                <button id="delete">Delete Report</button>
+            </div>
+        </div>
+        <div id="tabs-3">
+            <div id="changeStatusForm">
+                <fieldset id="Change Status Report">
+                    <legend>Change Report's Status Form:</legend>
+                    <div class="pairContainer">
+                        <label for="idChange">ID:</label>
+                        <input id="idChange" type="number">
+                    </div>
+                    <div class="pairContainer">
+                        <label for="new_status">New Status:</label>
+                        <select id="new_status">
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+                <button id="change">Change Report Status</button>
+            </div>
+        </div>
+        <div id="tabs-4">
+            <div id="sortForm">
+                <fieldset id="sort reports">
+                    <legend>Change Report's Order:</legend>
+                    <div class="pairContainer">
+                        <label for="sort_methods">Sort Method:</label>
+                        <select id="sort_methods">
+                            <option value="ID">ID</option>
+                            <option value="author">Author</option>
+                            <option value="severity">Severity</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <button id="sort">Change Sort Method</button>
+            </div>
+        </div>
+    </div>
+    <div id="content"></div>
+</div>
+<script>
+    (function () {
+        $("#tabs").tabs();
+        let model = bugReport();
+        model.output('#content');
+
+        $('#submit').on('click', function () {
+            let author = $('#author');
+            let description = $('#description');
+            let reproducible = $('#reproducible');
+            let severity = $('#severity');
+            if (author.val() === '' || description.val() === '') {
+                return;
+            }
+            model.report(author.val(), description.val(), reproducible.val(), severity.val());
+            // model.report('kiwi', 'judge rip', true, 5);
+
+            // model.report('guy', 'report content', true, 5);
+            // model.report('second guy', 'report content 2', true, 3);
+            // model.report('abv', 'report content three', true, 4);
+
+            clearValue(author, description, reproducible, severity);
+        });
+
+        $('#delete').on('click', function () {
+            let id = $('#idDelete');
+            model.remove(id.val());
+            clearValue(id);
+        });
+
+        $('#change').on('click', function () {
+            let id = $('#idChange');
+            let newStatus = $('#new_status');
+            model.setStatus(id.val(), newStatus.val());
+            clearValue(id, newStatus);
+        });
+
+        $('#sort').on('click', function () {
+            let method = $('#sort_methods').val();
+            model.sort(method);
+        });
+
+        function clearValue(...nodes) {
+            nodes.forEach(n => n.val(''));
+        }
+    })();
+</script>
+</body>
+</html>

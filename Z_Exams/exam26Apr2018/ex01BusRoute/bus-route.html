@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus route</title>
+    <link rel="stylesheet" href="bus-route-style.css">
+    <script src="../../../jquery-3.3.1.js"></script>
+    <script src="bus-route-function.js"></script>
+</head>
+<body>
+
+<section>
+    <h2>Given bus route</h2>
+    <ol id="bus-stops" type="1">
+        <!-- Select bus stops from here -->
+    </ol>
+</section>
+
+<div class="wrapper">
+    <section id="enter-stops">
+        <h2>Enter bus stops:</h2>
+        <label>First bus stop's number:
+            <input name="first-stop" type="number">
+        </label>
+        <label>Last bus stop's number:
+            <input name="last-stop" type="number">
+        </label>
+        <button onclick="busRoute()">Enter</button>
+    </section>
+</div>
+
+<section>
+    <h2>Selected route</h2>
+    <h3 id="selected-route">Bus stops: <span>none</span></h3>
+    <ul id="selected-bus-stops">
+        <!-- Display your selected bus stops here -->
+    </ul>
+</section>
+
+<script>
+    $(() => {
+        let busStops = [
+            "Gen. Gurko St.",
+            "Sofia University",
+            "Eagles' Bridge Sq.",
+            "Bulgarian News Agency",
+            "Peyo Yavorov Blvd.",
+            "Aleksandar Zhendov Bvld.",
+            // You can add/remove bus stops from here
+        ];
+
+        let listBusStops = $('#bus-stops');
+        for (let i = 0; i < busStops.length; i++) {
+            const busStopLi = $('<li>').text(busStops[i]);
+
+            listBusStops.append(busStopLi)
+        }
+    })
+</script>
+</body>
+</html>

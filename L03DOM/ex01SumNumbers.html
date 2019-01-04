@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex01SumNumbers</title>
+</head>
+<body>
+<input type="text" id="num1"/> +
+<input type="text" id="num2"/> =
+<input type="text" id="sum" readonly="readonly"/>
+<input type="button" value="Calc" onclick="calc()"/>
+<script>
+    function calc() {
+        let firstNumber = document.getElementById("num1").value;
+        let secondNumber = document.getElementById("num2").value;
+        document.getElementById("sum").value = Number(firstNumber) + Number(secondNumber);
+    }
+</script>
+</body>
+</html>

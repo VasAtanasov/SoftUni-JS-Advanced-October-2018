@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Reservation</title>
+    <link rel="stylesheet" href="reservation-style.css">
+    <script src="../../../jquery-3.3.1.js"></script>
+    <script src="reservation.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <h1>Make Reservation</h1>
+    <h4>Please fill in the following information in order to proceed with your reservation:</h4>
+    <div class="block">
+        <div class="inputLabel">Full Name<input id="fullName"></div>
+        <br>
+        <div class="inputLabel">E-mail<input id="email"></div>
+        <br>
+        <div class="inputLabel">Phone Number<input id="phoneNumber"></div>
+        <br>
+        <div class="inputLabel">Address<input id="address"></div>
+        <br>
+        <div class="inputLabel">Postal Code<input id="postalCode"></div>
+        <button class="buttonMargined" id="submit">Submit</button>
+    </div>
+    <div class="block">
+        <label style="font-size: inherit;">Preview your information:</label><br>
+        <div class="preview">
+            <ul id="infoPreview"></ul>
+        </div>
+        <button class="buttonMargined" id="edit" disabled>Edit</button>
+        <button id="continue" disabled>Continue</button>
+    </div>
+    <div id="container"></div>
+</div>
+<script>
+    $('#fullName').val('Joro Italianeza');
+    $('#email').val('joroitalianeza@gmail.com');
+    // $('#phoneNumber').val('0888 888 888');
+    $('#address').val('Simeonovo');
+    $('#postalCode').val('1000');
+    makeReservation('#container');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Bill</title>
+    <link rel="stylesheet" href="bill-style.css">
+    <script src="../../../jquery-3.3.1.js"></script>
+    <script src="bill.js"></script>
+</head>
+<body>
+<h2>Restaurant Bill</h2>
+<table id="bill">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="product-list"></tbody>
+    <tfoot>
+    <tr>
+        <td>Total:</td>
+        <td>0.00</td>
+    </tr>
+    </tfoot>
+</table>
+<section id="add-product">
+    <h3>Add new product</h3>
+    <label>Product:
+        <input type="text">
+    </label>
+    <label>Price:
+        <input type="number">
+    </label>
+    <button onclick="addProduct()">Add</button>
+</section>
+<script>
+    let input = $('input');
+    let product = input.eq(0);
+    let price = input.eq(1);
+    let button = $('button').eq(0);
+
+    let products = [
+        ['Shopska', 4.99],
+        ['Burgasko', 1.49],
+        ['Sach', 11.49],
+        ['Burgasko', ''],
+        ['', 1.49],
+        ['Golqma Voda', 3.00],
+    ];
+
+    for (let [productInput, priceInput] of products) {
+        product.val(productInput);
+        price.val(priceInput);
+        button.click();
+    }
+</script>
+</body>
+</html>
